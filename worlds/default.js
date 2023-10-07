@@ -54,13 +54,13 @@ export function init(Constants) {
             card: {
                 name: "cube",
                 type: "object",
-                transltion: [0, 2, -2],
+                translation: [-4, 1, -8],
                 behaviorModules: ["ScriptCube"],
             }
         },
         {
             card: {
-                translation: [0, 1.5, -10],
+                translation: [2, 0.5, -10],
                 type: "object",
                 behaviorModules: ["BlockSpecManager", "Elected", "TextTexture", "BlockPanel"],
             }
