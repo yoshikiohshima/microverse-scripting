@@ -21,7 +21,7 @@ export function init(Constants) {
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "lights.js", "dragPanel.js", "drag.js", "canvasText.js", "croquetscript.js"
+        "lights.js", "dragPanel.js", "canvasText.js", "croquetscript.js"
     ];
 
     Constants.DefaultCards = [
