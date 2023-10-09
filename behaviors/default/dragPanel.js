@@ -192,6 +192,13 @@ class BlockPanelActor extends ActorBehavior {
 
             this.insertBlock(cShape, this.createBlock({blockType: "command", name: "translateBy", fill: "#ffffff"}, [[3, 2, 1], 1]));
             this.insertBlock(cShape, this.createBlock({blockType: "command", name: "turnBy", fill: "#ffffff"}, [[1.5, 0, 0], 1]));
+            let cShape1 = this.insertBlock(top, this.createBlock({blockType: "cShape", name: "in order", fill: "#e0e0f0"}));
+
+            let c = this.getCard(cShape1);
+            c._cardData.spec.position = [0.5, 2, 1];
+
+            this.insertBlock(cShape1, this.createBlock({blockType: "command", name: "translateBy", fill: "#ffffff"}, [[-3, -2, -1], 1]));
+            this.insertBlock(cShape1, this.createBlock({blockType: "command", name: "turnBy", fill: "#ffffff"}, [[1.5, 0, 0], 1]));
         }
 
         if (!this.dropZoneMap) {
@@ -912,8 +919,12 @@ class BlockPanelActor extends ActorBehavior {
         if (spec.blockType === "cShape") {
             let childrenIds = this._cardData.childrenMap.get(target);
             let children = childrenIds.slice(1).map((cid) => this.makeTree(cid));
-            let map = {together: "par", "in order": "seq"};
-            return {type: map[spec.name], children};
+            let map = {together: "par", "in order": "loop"};
+            let result = {type: map[spec.name], children};
+            if (spec.name === "in order") {
+                result.loopCount = 1;
+            }
+            return result;
         }
 
         if (spec.blockType === "command") {

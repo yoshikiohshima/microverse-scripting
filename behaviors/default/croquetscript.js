@@ -67,7 +67,7 @@ class ScriptRunnerActor {
     runStep() {
         if (!this.running) {return;}
         this.currentTime = this.now();
-        console.log("this.currentTime", this.currentTime);
+        // console.log("this.currentTime", this.currentTime);
 
         this.states.forEach((value, key) => {
             this.step(key, value);
@@ -232,7 +232,7 @@ class ScriptActionsActor {
         let t = Math.min(1, state.time / state.duration);
 
         this.translation = Microverse.v3_lerp(state.startTranslation, Microverse.v3_add(state.startTranslation, state.params), t);
-        console.log(this.id, this.translation);
+        // console.log(this.id, this.translation);
         return this;
     }
 
@@ -254,7 +254,7 @@ class ScriptActionsActor {
             state.startRotation,
             q_multiply(state.startRotation, q),
             t);
-        console.log(this.id, this.rotation);
+        // console.log(this.id, this.rotation);
         return this;
     }
 }
