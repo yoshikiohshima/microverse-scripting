@@ -73,7 +73,7 @@ class ScriptRunnerActor {
             this.step(key, value);
         });
         if (this.states.size !== 0 && this.running) {
-            this.future(16).runStep();
+            this.future(50).runStep();
         }
     }
 
@@ -214,7 +214,6 @@ class ScriptActionsActor {
         }
 
         let t = Math.min(1, state.time / state.duration);
-
         this.translation = Microverse.v3_lerp(state.startTranslation, state.params, t);
         return this;
     }
@@ -229,8 +228,8 @@ class ScriptActionsActor {
             state.startTranslation = this.translation;
             return this;
         }
-        let t = Math.min(1, state.time / state.duration);
 
+        let t = Math.min(1, state.time / state.duration);
         this.translation = Microverse.v3_lerp(state.startTranslation, Microverse.v3_add(state.startTranslation, state.params), t);
         // console.log(this.id, this.translation);
         return this;

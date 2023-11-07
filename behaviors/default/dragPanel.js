@@ -766,7 +766,7 @@ class BlockPanelActor extends ActorBehavior {
             }
         });
 
-        if (min > 1) {
+        if (min > 0.3) {
             minInfo = null;
         }
 
